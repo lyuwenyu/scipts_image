@@ -29,7 +29,7 @@ class Fetcher(Process):
 		
 	def run(self):
 		while True:
-			time.sleep(1)
+			time.sleep(5)
 			self._queue.put( random.randint(0,10) )
 
 
@@ -47,9 +47,14 @@ if __name__ == '__main__':
 
 	q_tmp = Queue(10)
 	#pw = Process(target=writer, args=(q_tmp, ))
-	##pr = Process(target=read, args=(q_tmp, ))
+	#pr = Process(target=read, args=(q_tmp, ))
 	#pw.start()
+	#pr.start()
 
+	#fetcher_process1 = Fetcher(q_tmp)
+	#fetcher_process2 = Fetcher(q_tmp)
+	#fetcher_process1.start()
+	#fetcher_process2.start()
 
 	fetcher_process = Fetcher(q_tmp)
 	fetcher_process.start()
