@@ -46,16 +46,24 @@ if __name__ == '__main__':
 
 
 	q_tmp = Queue(10)
+	
+	# 1.
 	#pw = Process(target=writer, args=(q_tmp, ))
 	#pr = Process(target=read, args=(q_tmp, ))
 	#pw.start()
 	#pr.start()
-
+	
+	# 2.
 	#fetcher_process1 = Fetcher(q_tmp)
 	#fetcher_process2 = Fetcher(q_tmp)
 	#fetcher_process1.start()
 	#fetcher_process2.start()
-
+	
+	# 3.
+	#for i in range(5):
+	#	fetcher_process = Fetcher(q_tmp)
+	#	fetcher_process.start()
+	
 	fetcher_process = Fetcher(q_tmp)
 	fetcher_process.start()
 
