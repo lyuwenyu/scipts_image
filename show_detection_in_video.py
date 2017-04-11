@@ -47,8 +47,6 @@ def show_detection_video(data_dir, det_file, result_name):
 		fourcc = cv2.VideoWriter_fourcc(*'XVID')  
 		videoWriter = cv2.VideoWriter(result_name, fourcc, 10.0, (frame.shape[1], frame.shape[0]))
 
-		
-
 
 		for n, im_name in enumerate(im_names):
 
@@ -69,7 +67,7 @@ def show_detection_video(data_dir, det_file, result_name):
 
 
 			# tmp = np.asarray(im)
-			videoWriter.write(np.asarray(im))
+			videoWriter.write(np.asarray(im)[:,:,::-1]) # rgb 2 bgr
 
 
 			if n%50 ==0:
