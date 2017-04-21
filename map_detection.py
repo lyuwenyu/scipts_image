@@ -174,8 +174,8 @@ if __name__ == '__main__':
 
 
     import glob
-    gt_filenames = glob.glob('D:/XiChen/KITTI/training/label_02/*.txt')
-    det_filnames = glob.glob('D:/WenyuLv/workspace/py-faster-rcnn-master/test/kitti_result/vgg/train/*.txt')
+    gt_filenames = glob.glob('/*.txt')
+    det_filnames = glob.glob('/*.txt')
 
 
     aps = []
