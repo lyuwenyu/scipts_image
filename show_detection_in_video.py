@@ -1,5 +1,7 @@
 import cv2
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage import transform, io
@@ -42,11 +44,10 @@ def show_detection_video(data_dir, det_file, result_name):
 		# size = (int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)), int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)))
 		
 		# frame = plt.imread(data_dir+'/000001.png')
-		print frame.shape
 
 		fourcc = cv2.VideoWriter_fourcc(*'XVID')  
 		videoWriter = cv2.VideoWriter(result_name, fourcc, 10.0, (frame.shape[1], frame.shape[0]))
-
+		font = ImageFont.truetype('./simsun.ttc', 18)
 
 		for n, im_name in enumerate(im_names):
 
@@ -64,7 +65,7 @@ def show_detection_video(data_dir, det_file, result_name):
 			draw = ImageDraw.Draw(im)
 			for bbox in dets:
 				draw.rectangle([float(i) for i in bbox[1:5]], outline=(0,0,255))  #fill=(255,0,0)  outline
-
+				draw.text((20, 20), 'frame: {:0>5}'.format(n), 'red', font=font)
 
 			# tmp = np.asarray(im)
 			videoWriter.write(np.asarray(im)[:,:,::-1]) # rgb 2 bgr
